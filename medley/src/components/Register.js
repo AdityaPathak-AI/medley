@@ -28,6 +28,7 @@ const Register = () => {
       if (response.data.status) {
         setStatus(true);
         setMsg(response.data.msg);
+
       } else {
         setStatus(false);
         setMsg(response.data.msg);
@@ -41,7 +42,6 @@ const Register = () => {
     }
   }
  
-
   return (
     <div>
       <div className="container">
@@ -94,7 +94,7 @@ const Register = () => {
                 ref={numberBox}
               />
             </div>
-            <button className="btn mt-3 bg-dark">Signup</button>
+            <button className="btn mt-3 bg-dark">{loading? "Saving...":"Save"}</button>
           </form>
           <div className="text-center my-5">
             <h1>

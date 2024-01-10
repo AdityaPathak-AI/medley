@@ -25,7 +25,9 @@ const Login = () => {
       setLoading(true);
       const response = await ApiServices.PostApiCall(ApiUrls.LOGIN, obj);
       console.log("response:", response);
-      if (response.data.status) {
+      
+      if (response.data.status) 
+      {
         setStatus(true);
         setMsg(response.data.msg);
         const d = dispatch(

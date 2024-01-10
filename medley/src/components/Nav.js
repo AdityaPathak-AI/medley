@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   const user = useSelector((state) => state.authInfo.value);
+  
   return (
     <>
       <header>
@@ -30,16 +31,16 @@ export default function Nav() {
                               {user.type == "doctor" ? (
                                 <>
                                   <li>
-                                    <Link to="home">Home</Link>
+                                    <Link to="/">Home</Link>
                                   </li>
                                   <li>
-                                    <Link to="home">New Clinic</Link>
+                                    <Link to="/">New Clinic</Link>
                                   </li>
                                   <li>
-                                    <Link to="home">All Clinics</Link>
+                                    <Link to="/">All Clinics</Link>
                                   </li>
                                   <li>
-                                    <Link to="home">Appointments</Link>
+                                    <Link to="/">Appointments</Link>
                                   </li>
                                 </>
                               ) : (
