@@ -32,7 +32,6 @@ const Register = () => {
         setStatus(false);
         setMsg(response.data.msg);
       }
-
     } catch (error) {
       setStatus(false);
       setMsg("Network Error");
@@ -76,7 +75,7 @@ const Register = () => {
               />
             </div>
             <div className="form-field d-flex align-items-center">
-              <span className="fas fa-key"></span>
+              <span className="fa fa-envelope"></span>
               <input
                 type="email"
                 name="email"
@@ -86,7 +85,7 @@ const Register = () => {
               />
             </div>
             <div className="form-field d-flex align-items-center">
-              <span className="fas fa-key"></span>
+              <span className="fa fa-mobile"></span>
               <input
                 type="number"
                 name="number"

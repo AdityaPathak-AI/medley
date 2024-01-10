@@ -1,14 +1,16 @@
 import { useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ApiServices, { ApiUrls } from "../apiService/ApiServices";
+import { authReducer } from "../redux/AuthSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const[msg , setMsg] = useState(" ")
   const[loading , setLoading] = useState(false)
   const[status , setStatus] = useState(false)
   const navigate = useNavigate();
-
-
+  const dispatch = useDispatch();
+  
   const emailBox = useRef();
   const passwordBox = useRef();
  
@@ -26,6 +28,15 @@ const Login = () => {
       if (response.data.status) {
         setStatus(true);
         setMsg(response.data.msg);
+        const d = dispatch(
+          authReducer({
+            token: response.data.data.token,
+            name: response.data.data.user.name,
+            type: response.data.data.userType,
+            isLogin: true
+          })
+        );
+        console.log(d);
         navigate('/')
       } else {
         setStatus(false);
