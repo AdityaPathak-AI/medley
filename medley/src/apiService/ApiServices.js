@@ -18,7 +18,7 @@ export const ApiUrls = {
   DOCTOR_SAVE: `${SERVER}/auth/doctor/save`,
   LOGIN: `${SERVER}/auth/login`,
   NEW_CLINIC: `${SERVER}/api/reception/save`,
-  APPOINTMENT_LIST: `${SERVER}/api/reception/lists`,
+  RECEPTION_LIST: `${SERVER}/api/reception/lists`,
 };
 
 export default new ApiServices()
