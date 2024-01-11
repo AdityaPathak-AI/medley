@@ -1,9 +1,25 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { authReducer } from "../redux/AuthSlice";
 
 export default function Nav() {
   const user = useSelector((state) => state.authInfo.value);
-  
+  console.log(user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(
+      authReducer({
+        token: undefined,
+        name: undefined,
+        type: undefined,
+        isLogin: false,
+      })
+    );
+    navigate("/");
+  };
+
   return (
     <>
       <header>
@@ -34,13 +50,15 @@ export default function Nav() {
                                     <Link to="/">Home</Link>
                                   </li>
                                   <li>
-                                    <Link to="/">New Clinic</Link>
+                                    <Link to="/newClinic">New Clinic</Link>
                                   </li>
                                   <li>
-                                    <Link to="/">All Clinics</Link>
+                                    <Link to="/AllClinics">All Clinics</Link>
                                   </li>
                                   <li>
-                                    <Link to="/">Appointments</Link>
+                                    <Link to="/allApointments">
+                                      Appointments
+                                    </Link>
                                   </li>
                                 </>
                               ) : (
@@ -76,9 +94,9 @@ export default function Nav() {
                     {user.isLogin ? (
                       <>
                         <div className="header-right-btn f-right d-none d-lg-block ml-15">
-                          <Link to="/" className="btn header-btn">
+                          <button className="btn header-btn" onClick={logout}>
                             Logout
-                          </Link>
+                          </button>
                         </div>
                       </>
                     ) : (
