@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import NewClinic from "./components/doctor/NewClinic";
 import AllClinics from "./components/doctor/AllClinics";
 import Appointments from "./components/doctor/Appointments";
+import Update from "./components/doctor/UpdateClinic";
 function App() {
   const user = useSelector((state) => state.authInfo.value);
   return (
@@ -23,12 +24,16 @@ function App() {
             {user.type == "doctor" ? (
               <>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/newClinic" element={<NewClinic/>}></Route>
+                <Route path="/newClinic" element={<NewClinic />}></Route>
                 <Route path="/allClinics" element={<AllClinics />}></Route>
-                <Route path="/allAppointments" element={<Appointments />}></Route>
+                <Route
+                  path="/allAppointments"
+                  element={<Appointments />}
+                ></Route>
+                <Route path="/update" element={<Update />}></Route>
               </>
             ) : (
-            <> </>
+              <> </>
             )}
           </>
         ) : (

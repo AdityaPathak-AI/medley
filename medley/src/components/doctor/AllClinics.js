@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ApiServices, { ApiUrls } from "../../apiService/ApiServices";
-import { listClinicReducer } from "../../redux/ClinicSlice";
+import { listClinicReducer, updateClinicReducer } from "../../redux/ClinicSlice";
+import { useNavigate } from "react-router-dom";
 
 
 export default function AllClinics() {
@@ -12,6 +13,7 @@ export default function AllClinics() {
   const [status, setStatus] = useState(false);
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
+   const navigate = useNavigate();
 
   const fetchUserList = async () => {
     try {
@@ -59,6 +61,11 @@ export default function AllClinics() {
     }
   }
 
+  const UpdateClinic = (obj) => {
+    dispatch(updateClinicReducer(obj));
+    navigate("/update");
+  };
+
   useEffect(() => {
     fetchUserList();
   }, []);
@@ -93,17 +100,22 @@ export default function AllClinics() {
                         <td>{obj.phoneNumber}</td>
                         <td>{obj.email}</td>
                         <td>
-                          <button className="btn btn-sucess">Update</button>
+                          <button
+                            className="btn btn-sucess"
+                            onClick={() => UpdateClinic(obj)}
+                          >
+                            Update
+                          </button>
                           &nbsp;&nbsp;
                           <button
                             className="btn btn-danger"
-                            onClick={()=>del(obj.id)}
+                            onClick={() => del(obj.id)}
                             style={{ backgroundColor: "red" }}
                           >
                             Delete
                           </button>
                         </td>
-                      </tr>   
+                      </tr>
                     ))}
                   </tbody>
                 </table>

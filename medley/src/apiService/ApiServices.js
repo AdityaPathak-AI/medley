@@ -18,9 +18,16 @@ class ApiServices {
       },
     });
   }
-  ClinicDeleteApi(url,data,token){
-    return axios.put(url,data,{
-      headers:{
+  ClinicDeleteApi(url, data, token) {
+    return axios.put(url, data, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+  }
+  ClinicUpdateApi(url, data, token) {
+    return axios.put(url, data, {
+      headers: {
         Authorization: "Bearer " + token,
       },
     });
@@ -36,6 +43,6 @@ export const ApiUrls = {
   CLINIC_LIST: `${SERVER}/api/reception/lists`,
   CLINIC_DELETE: `${SERVER}/api/reception/delete/`,
   CLINIC_UPDATE : `${SERVER}/api/reception/updateReception/`
-};
+};  
 
 export default new ApiServices();
