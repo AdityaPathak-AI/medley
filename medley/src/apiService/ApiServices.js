@@ -11,14 +11,22 @@ class ApiServices {
       },
     });
   }
+  GetApiCall(url, token) {
+    return axios.get(url, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+  }
 }
-const SERVER = "http://tutorials.codebetter.in:3000"
+
+const SERVER = "http://tutorials.codebetter.in:3000";
 
 export const ApiUrls = {
   DOCTOR_SAVE: `${SERVER}/auth/doctor/save`,
   LOGIN: `${SERVER}/auth/login`,
   NEW_CLINIC: `${SERVER}/api/reception/save`,
-  RECEPTION_LIST: `${SERVER}/api/reception/lists`,
+  CLINIC_LIST: `${SERVER}/api/reception/lists`,
 };
 
-export default new ApiServices()
+export default new ApiServices();
