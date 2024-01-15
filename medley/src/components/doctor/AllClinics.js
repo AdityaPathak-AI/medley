@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ApiServices, { ApiUrls } from "../../apiService/ApiServices";
 import { listClinicReducer } from "../../redux/ClinicSlice";
 
+
 export default function AllClinics() {
   const user = useSelector((state) => state.authInfo.value);
   const clinics = useSelector((state) => state.clinicInfo.value);
@@ -34,6 +35,30 @@ export default function AllClinics() {
       setLoading(false);
     }
   };
+   
+  const del = async (id) => {
+    const confirm = window.confirm("Do you want to Delete Record?")
+    if (confirm){
+      try {
+        const URL = ApiUrls.CLINIC_DELETE + id
+        const response = await ApiServices.ClinicDeleteApi(URL , null ,user.token)
+        console.log(response)
+        if(response.data.status){
+          setMsg(response.data.msg)
+          const nlist = clinics.filter(obj=>obj.id !== response.data.id)
+          dispatch((nlist))
+        }
+        else{
+          setMsg(response.data.msg)
+        }
+       } catch (error) {
+        setMsg('network error')
+      }
+    }else{
+      setMsg('Action Cancelled by User');
+    }
+  }
+
   useEffect(() => {
     fetchUserList();
   }, []);
@@ -72,12 +97,13 @@ export default function AllClinics() {
                           &nbsp;&nbsp;
                           <button
                             className="btn btn-danger"
+                            onClick={()=>del(obj.id)}
                             style={{ backgroundColor: "red" }}
                           >
                             Delete
                           </button>
                         </td>
-                      </tr>
+                      </tr>   
                     ))}
                   </tbody>
                 </table>

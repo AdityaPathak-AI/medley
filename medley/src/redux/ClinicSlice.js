@@ -10,7 +10,11 @@ const slice = createSlice({
       state.value = action.payload;
       console.log(action.payload);
     },
+    deleteClinicReducer:(state,action)=>{
+        state.value = action.payload;
+        console.log(action.payload);
+    }
   },
 });
-export const { listClinicReducer } = slice.actions;
+export const { listClinicReducer , deleteClinicReducer   } = slice.actions;
 export default slice.reducer;
