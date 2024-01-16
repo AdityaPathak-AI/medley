@@ -32,6 +32,13 @@ class ApiServices {
       },
     });
   }
+  PutApiCall(url, data, token) {
+    return axios.put(url, data, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+  }
 }
 
 const SERVER = "http://tutorials.codebetter.in:3000";

@@ -136,7 +136,7 @@ export default function NewClinic() {
                     type="submit"
                     className="button button-contactForm boxed-btn"
                   >
-                    {loading ? "Saving..." : "Save"}
+                    {loading ? "Saving..." : "Saved"}
                   </button>
                 </div>
                 <h3 className={status ? " alert alert-success" : "text-danger"}>

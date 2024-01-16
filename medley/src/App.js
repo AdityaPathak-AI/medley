@@ -22,6 +22,7 @@ function App() {
       <Nav />
 
       <Routes>
+        {/* DOCTOR LOGIN */}
         {user.isLogin ? (
           <>
             {user.type == "doctor" ? (
@@ -39,25 +40,20 @@ function App() {
               <></>
             )}
 
+          {/* RECEPTION LOGIN */}
+
             {user.type == "reception" ? (
               <>
                 <Route path="/home" element={<Home />}></Route>
-                <Route
-                  path="/newAppointment"
-                  element={<NewAppointment />}
-                ></Route>
-                <Route
-                  path="/allAppointments"
-                  element={<AllAppointments />}
-                ></Route>
-                <Route
-                  path="/updateAppointment"
-                  element={<UpdateAppointment />}
-                ></Route>
+                <Route path="/newAppointment" element={<NewAppointment />}></Route>
+                <Route path="/allAppointments"element={<AllAppointments />}></Route>
+                <Route path="/updateAppointment"element={<UpdateAppointment />}></Route>
               </>
             ) : (
               <></>
             )}
+
+            {/* USER */}
           </>
         ) : (
           <>
