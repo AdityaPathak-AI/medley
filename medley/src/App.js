@@ -12,6 +12,9 @@ import NewClinic from "./components/doctor/NewClinic";
 import AllClinics from "./components/doctor/AllClinics";
 import Appointments from "./components/doctor/Appointments";
 import Update from "./components/doctor/UpdateClinic";
+import NewAppointment from "./components/reception/NewAppointment";
+import AllAppointments from "./components/reception/AllAppointments";
+import UpdateAppointment from "./components/reception/UpdateAppointment";
 function App() {
   const user = useSelector((state) => state.authInfo.value);
   return (
@@ -33,7 +36,27 @@ function App() {
                 <Route path="/update" element={<Update />}></Route>
               </>
             ) : (
-              <> </>
+              <></>
+            )}
+
+            {user.type == "reception" ? (
+              <>
+                <Route path="/home" element={<Home />}></Route>
+                <Route
+                  path="/newAppointment"
+                  element={<NewAppointment />}
+                ></Route>
+                <Route
+                  path="/allAppointments"
+                  element={<AllAppointments />}
+                ></Route>
+                <Route
+                  path="/updateAppointment"
+                  element={<UpdateAppointment />}
+                ></Route>
+              </>
+            ) : (
+              <></>
             )}
           </>
         ) : (
@@ -54,3 +77,4 @@ function App() {
 }
 
 export default App;
+

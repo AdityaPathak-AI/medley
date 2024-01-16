@@ -17,6 +17,7 @@ export default function Nav() {
         isLogin: false,
       })
     );
+    localStorage.removeItem("userInfo");
     navigate("/");
   };
 
@@ -64,7 +65,26 @@ export default function Nav() {
                               ) : (
                                 ""
                               )}
-                              {user.type == "reception" ? <></> : ""}
+                              {user.type == "reception" ? (
+                                <>
+                                  <li>
+                                    <Link to="/">Home</Link>
+                                  </li>
+                                  <li>
+                                    <Link to="/allAppointments">All Appointments</Link>
+                                  </li>
+                                  <li>
+                                    <Link to="/newAppointment">New Appointment</Link>
+                                  </li>
+                                  <li>
+                                    <Link to="/updateApointments">
+                                      Update Appointments
+                                    </Link>
+                                  </li>
+                                </>
+                              ) : (
+                                ""
+                              )}
                             </>
                           ) : (
                             <>
